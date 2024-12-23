@@ -1,4 +1,5 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
  * Plugin About Page
  *
@@ -8,7 +9,10 @@
 <div id="sps-about" class="sps-about-page">
 	<div class="spice-col-2">
 		<div class="sps-about-img">
-			<img src="<?php echo esc_url(SPS_URL.'assets/img/about-mockup.png');?>">
+			<?php 
+			$sps_attachment_id = sps_save_image_to_media_library(SPS_URL.'assets/img/about-mockup.png');
+            echo wp_get_attachment_image(esc_attr($sps_attachment_id), 'full', false) ;
+			?>
 		</div>
 		<div class="sps-about-features">
 			<div class="sps-about-feat-box">

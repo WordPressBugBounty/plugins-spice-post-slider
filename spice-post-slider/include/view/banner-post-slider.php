@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+
 <section class="sps page-section-space blog bg-default sps<?php echo esc_attr($sps_post_id);?> <?php if($sps_slider_type=='banner_slider') echo 'sps-banner-style';?>">
                 <div id="blog-carousel<?php echo esc_attr($sps_post_id);?>" class="owl-carousel owl-theme">
                 <?php 
@@ -25,7 +27,7 @@
                                         <?php if($sps_dt=='yes'):?>
                                         <span class="date">  
                                             <i class="far fa-clock"></i> 
-                                            <a href="<?php echo esc_url( home_url('/') ); ?><?php echo esc_html(date( 'Y/m' , strtotime( get_the_date() )) ); ?>" >
+                                            <a href="<?php echo esc_url( home_url('/') ); ?><?php echo esc_html(gmdate( 'Y/m' , strtotime( get_the_date() )) ); ?>" >
                                                 <time class="entry-date" ><?php echo esc_html(get_the_date()); ?></time>
                                             </a>
                                         </span>
@@ -97,7 +99,7 @@
                         </div>
                      <?php 
                     }
-                    wp_reset_query();
+                    wp_reset_postdata();
                 }
                 ?>
                 </div>

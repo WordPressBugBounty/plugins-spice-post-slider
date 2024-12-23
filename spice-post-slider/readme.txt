@@ -3,10 +3,12 @@ Contributors:       spicethemes
 Tags:               post carousel, banner slider, recent post slider, image slider
 Requires at least:  5.3
 Requires PHP:       5.2
-Tested up to:       6.3.2
-Stable tag:         2.0.1
+Tested up to:       6.7.1
+Stable tag:         2.1
 License:            GPLv2 or later
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
+
+Display your blog posts with a responsive, customizable slider that works smoothly on all devices.
 
 == Description ==
 
@@ -120,6 +122,9 @@ Yes you can customize everything for every state (normal). The post slider comes
 6. Add shortcode page
 
 == Changelog ==
+
+@Version 2.1
+* Fixed PCP plugin related issues.
 
 @Version 2.0.1.1
 * Fixed Warning Deprecated: Creation of dynamic property by adding public path and url variables in Spice_Post_Slider class.

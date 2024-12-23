@@ -1,4 +1,6 @@
 <?php
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
 //General
 $sps_orderby = get_post_meta( get_the_ID(), 'sps_orderby', true );
 $sps_video_banner = get_post_meta( get_the_ID(), 'sps_video_banner', true );
@@ -83,7 +85,10 @@ $sps_line_height = array();
     for($i=10; $i<=100; $i++) {
         $sps_line_height[$i] = $i;
     }
-$sps_font_family = sps_typo_fonts();?>
+$sps_font_family = sps_typo_fonts();
+
+$sps_pro_badge_id = sps_save_image_to_media_library(SPS_URL.'assets/img/pro-icon.png');
+?>
 <div id="tabs">
   <ul>
     <li><a href="#tabs-1"><?php echo esc_html__('General','spice-post-slider');?></a></li>
@@ -99,9 +104,9 @@ $sps_font_family = sps_typo_fonts();?>
           <span class="sps-td-span"><?php echo esc_html__('Select slider type for project creation','spice-post-slider');?></span>
         </td>
         <td class="sps-td-attr">
-          <input class="sps-td-post-type" id="sps-input-item-banner-btn" <?php if ($sps_slider_type=='banner_slider') echo "checked";?> type="radio" name="sps_slider_type" value="banner_slider"><label class="sps-chose-item-btn <?php if ($sps_slider_type=='banner_slider') echo "active";?>" id="sps-choose-item-banner-btn"><?php esc_html_e('Banner Slider','spice-slider-pro');?></label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input class="sps-td-post-type" id="sps-input-item-post-btn" <?php if ($sps_slider_type=='blog_post_slider') echo "checked";?> type="radio" name="sps_slider_type" value="blog_post_slider"><label class="sps-chose-item-btn <?php if ($sps_slider_type=='blog_post_slider') echo "active";?>" id="sps-choose-item-post-btn"><?php esc_html_e('Post Slider','spice-slider-pro');?></label>&nbsp;&nbsp;&nbsp;&nbsp;
-          <input class="sps-td-post-type" id="sps-input-item-video-btn" <?php if ($sps_slider_type=='vdo_slider') echo "checked";?> type="radio" name="sps_slider_type" value="vdo_slider"><label class="sps-chose-item-btn <?php if ($sps_slider_type=='vdo_slider') echo "active";?>" id="sps-choose-item-video-btn"><?php esc_html_e('Video Slider','spice-slider-pro');?></label>
+          <input class="sps-td-post-type" id="sps-input-item-banner-btn" <?php if ($sps_slider_type=='banner_slider') echo "checked";?> type="radio" name="sps_slider_type" value="banner_slider"><label class="sps-chose-item-btn <?php if ($sps_slider_type=='banner_slider') echo "active";?>" id="sps-choose-item-banner-btn"><?php esc_html_e('Banner Slider','spice-post-slider');?></label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="sps-td-post-type" id="sps-input-item-post-btn" <?php if ($sps_slider_type=='blog_post_slider') echo "checked";?> type="radio" name="sps_slider_type" value="blog_post_slider"><label class="sps-chose-item-btn <?php if ($sps_slider_type=='blog_post_slider') echo "active";?>" id="sps-choose-item-post-btn"><?php esc_html_e('Post Slider','spice-post-slider');?></label>&nbsp;&nbsp;&nbsp;&nbsp;
+          <input class="sps-td-post-type" id="sps-input-item-video-btn" <?php if ($sps_slider_type=='vdo_slider') echo "checked";?> type="radio" name="sps_slider_type" value="vdo_slider"><label class="sps-chose-item-btn <?php if ($sps_slider_type=='vdo_slider') echo "active";?>" id="sps-choose-item-video-btn"><?php esc_html_e('Video Slider','spice-post-slider');?></label>
 
         </td>
       </tr>
@@ -127,10 +132,16 @@ $sps_font_family = sps_typo_fonts();?>
                 <div>
                   <div class="sps_admin_showcase">
                      <?php if($i!=1):?><a class="sps-fetch-demo-url" style="color:#fff;text-decoration:none" target="_blank" href="<?php echo esc_url('https://plugin-demo.spicethemes.com/spice-slider-pro/' . $sps_demo_type . '/#design-' . $i );?>"><div class="ribbon-pro">
-                    <img src="<?php echo esc_url(SPS_URL.'assets/img/pro-icon.png');?>">
-                  </div><?php endif;?>
-                    <img class="sps_responsive ftr_img" src="<?php echo esc_url(SPS_URL.'assets/img/b-'.$i.'.png');?>" id="templates_banner_btn<?php echo esc_attr($i); ?>" >
-                    <?php if($i!=1):?></a><?php endif;?>
+                    <?php echo wp_get_attachment_image(esc_attr($sps_pro_badge_id), 'full', false); ?>
+                  </div><?php endif;
+                  $bslide_img_id = sps_save_image_to_media_library(SPS_URL.'assets/img/b-'.$i.'.png');
+                  $bslide_img_attr = array(
+                      'class' => 'sps_responsive ftr_img',
+                      'id'    => 'templates_banner_btn'. esc_attr($i),
+                      'height'=> 'auto'
+                  );
+                  echo wp_get_attachment_image(esc_attr($bslide_img_id), 'full', false, $bslide_img_attr);
+                  if($i!=1):?></a><?php endif;?>
                     
                   </div>
                 </div>
@@ -161,10 +172,14 @@ $sps_font_family = sps_typo_fonts();?>
                 <div>
                   <div class="sps_admin_showcase">
                     <?php if($i!=1):?><a style="color:#fff;text-decoration:none" target="_blank" href="<?php echo esc_url('https://plugin-demo.spicethemes.com/spice-slider-pro/post-slider/#design-' . $i );?>"><div class="ribbon-pro">
-                    <img src="<?php echo esc_url(SPS_URL.'assets/img/pro-icon.png');?>">
-                  </div><?php endif;?>
-                    <img class="sps_responsive ftr_img" src="<?php echo esc_url(SPS_URL.'assets/img/'.$i.'.png');?>" >
-                  <?php if($i!=1):?></a><?php endif;?>
+                    <?php echo wp_get_attachment_image(esc_attr($sps_pro_badge_id), 'full', false); ?>
+                  </div><?php endif;
+                  $pslide_img_id = sps_save_image_to_media_library(SPS_URL.'assets/img/'.$i.'.png');
+                  $pslide_img_attr = array(
+                      'class' => 'sps_responsive ftr_img'
+                  );
+                  echo wp_get_attachment_image(esc_attr($pslide_img_id), 'full', false, $pslide_img_attr);
+                  if($i!=1):?></a><?php endif;?>
 
                   </div>
                 </div>  

@@ -284,3 +284,7 @@ body .sps-tbl .sps-chose-item-btn {
 .sps-meta-doc-btn {padding: 18px 40px;}
 .sps-meta-upro-btn {padding: 18px 44px;}
 .sps-meta-rate-btn i:before, .sps-meta-support-btn i:before, .sps-meta-doc-btn i:before, .sps-meta-upro-btn i:before {padding-left: 8px;}
+
+#sps-banner-layout .sps_admin_showcase img, #sps-post-layout .sps_admin_showcase img {
+    height: auto;
+}

@@ -1,3 +1,5 @@
+<?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
+
 <section class="sps page-section-space blog sps-bnr-video video_slider default sps<?php echo esc_attr($sps_post_id);?>">
    <video autoplay="" muted="" loop="" id="video_slider">
       <source src="<?php echo esc_attr($sps_video_banner);?>" type="video/mp4">
@@ -59,14 +61,14 @@
                                          if($sps_dt=='yes'):?>
 	                                        <span class="sps-date">  
 	                                            <i class="far fa-clock"></i> 
-	                                            <a href="<?php echo esc_url( home_url('/') ); ?><?php echo esc_html(date( 'Y/m' , strtotime( get_the_date() )) ); ?>" >
+	                                            <a href="<?php echo esc_url( home_url('/') ); ?><?php echo esc_html(gmdate( 'Y/m' , strtotime( get_the_date() )) ); ?>" >
 	                                                <time class="entry-date" ><?php echo esc_html(get_the_date()); ?></time>
 	                                            </a>
 	                                        </span>
                                         <?php endif;
                                         if($sps_comments=='yes'): ?>
                                           <span class="sps-comment-links"><i class="far fa-comment-alt"></i><a href="<?php the_permalink(); ?>#respond" >
-                                             <?php echo esc_html(get_comments_number()); echo esc_html__(' Comments','spice-slider-pro');?>
+                                             <?php echo esc_html(get_comments_number()); echo esc_html__(' Comments','spice-post-slider');?>
                                           </a></span> 
                                        <?php endif; ?>
 													</div>
@@ -84,7 +86,7 @@
 						</div>
 						<?php 
                }
-            wp_reset_query();
+            wp_reset_postdata();
          }
       ?>
    </div>
