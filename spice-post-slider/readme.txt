@@ -4,7 +4,7 @@ Tags:               post carousel, banner slider, recent post slider, image slid
 Requires at least:  5.3
 Requires PHP:       5.2
 Tested up to:       6.7.1
-Stable tag:         2.1
+Stable tag:         2.2
 License:            GPLv2 or later
 License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -122,6 +122,9 @@ Yes you can customize everything for every state (normal). The post slider comes
 6. Add shortcode page
 
 == Changelog ==
+
+@Version 2.2
+* Updated freemius directory.
 
 @Version 2.1
 * Fixed PCP plugin related issues.
