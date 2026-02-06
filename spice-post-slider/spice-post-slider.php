@@ -3,10 +3,10 @@
 * Plugin Name:			Spice Post Slider
 * Plugin URI:  			https://spicethemes.com/spice-post-slider/
 * Description: 			This plugin allows you to showcase your blog posts in a beautiful slider with multiple options, It is responsive ready so it will work perfectly on different devices like mobile and iPad.
-* Version:     			2.2
+* Version:     			2.2.1
 * Requires at least: 	5.3
 * Requires PHP: 		5.2
-* Tested up to: 		6.7.1
+* Tested up to: 		6.8
 * Author:      			Spicethemes
 * Author URI:  			https://spicethemes.com
 * License: 				GPLv2 or later
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 // Assuming WC_PLUGIN_VERSION is defined somewhere in your plugin
 if ( ! defined( 'SPS_PLUGIN_VERSION' ) ) {
-    define( 'SPS_PLUGIN_VERSION', '2.2' );
+    define( 'SPS_PLUGIN_VERSION', '2.2.1' );
 }
 
 if ( ! function_exists( 'sps_fs' ) ) {
@@ -66,7 +66,7 @@ if( ! defined('ABSPATH'))
  * Main Spice_Post_Slider Class
  *
  * @class Spice_Post_Slider
- * @version 2.1
+ * @version 2.2.1
  * @since 0.1
  * @package Spice_Post_Slider
  */
@@ -94,7 +94,7 @@ final class Spice_Post_Slider {
 	public function __construct() {
 		$this->plugin_url  = plugin_dir_url( __FILE__ );
 		$this->plugin_path = plugin_dir_path( __FILE__ );
-		$this->version     = '2.2';
+		$this->version     = '2.2.1';
 
 		define( 'SPS_URL', $this->plugin_url );
 		define( 'SPS_PATH', $this->plugin_path );
